@@ -24,10 +24,13 @@ body {
 /* Image style */
 
 .hackMeImg {
-max-width: 200px;
+max-width: 400px;
 max-height: 200px;
+height: auto;
+width: auto;
 border-radius: 12px;
 }
+
 img {
   width: 100%;
   max-width: 300px;
