@@ -8,7 +8,7 @@
 
 /* Body layout */
 body {
-  background: url('images/visual_mockup_bottom_left.png') no-repeat left bottom;
+  background: url('../images/visual_mockup_bottom_left.png') no-repeat left bottom;
   background-size: contain;
   background-color: #000000;
   color: #fff;
