@@ -6,6 +6,69 @@
   <title>My Portfolio</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
+<!-- React + ReactDOM + Babel for JSX in the browser -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+  const projects = [
+    {
+      title: "Study Planner iOS App",
+      summary: "Schedules sessions, reminders, progress tracking.",
+      tech: ["Swift","SwiftUI","CoreData"],
+      code: "https://github.com/your-handle/study-planner",
+      demo: "#",
+      cover: "/assets/images/section_image_0.png"
+    },
+    {
+      title: "Java Console Tool",
+      summary: "Parses CSV files and exports reports.",
+      tech: ["Java","JUnit"],
+      code: "https://github.com/your-handle/java-tool",
+      cover: "/assets/images/section_image_1.png"
+    },
+    {
+      title: "This Website",
+      summary: "Static site on GitHub Pages.",
+      tech: ["HTML","CSS","JS"],
+      code: "https://github.com/your-handle/your-portfolio-repo",
+      cover: "/assets/images/section_image_2.png"
+    }
+  ];
+
+  function Tag({children}) { return <span className="tag" style={{marginRight:'.4rem'}}>{children}</span>; }
+
+  function Card({p}) {
+    return (
+      <article className="card">
+        {p.cover && <img src={p.cover} alt={p.title} style={{width:'100%',borderRadius:'12px',marginBottom:'.8rem'}} />}
+        <h3 style={{margin:'.3rem 0'}}>{p.title}</h3>
+        <p className="muted">{p.summary}</p>
+        <div style={{display:'flex',gap:'.5rem',flexWrap:'wrap',margin:'.8rem 0'}}>
+          {p.tech.map(t => <Tag key={t}>{t}</Tag>)}
+        </div>
+        <div style={{display:'flex',gap:'.6rem',flexWrap:'wrap'}}>
+          {p.demo && <a className="btn" href={p.demo} target="_blank" rel="noreferrer">Live</a>}
+          {p.code && <a className="btn ghost" href={p.code} target="_blank" rel="noreferrer">Code</a>}
+        </div>
+      </article>
+    );
+  }
+
+  function Grid() {
+    return (
+      <section className="grid grid-3">
+        {projects.map(p => <Card key={p.title} p={p} />)}
+      </section>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("react-root"));
+  root.render(<Grid />);
+</script>
+
 <body>
     <nav>
       <div class="menu-container">

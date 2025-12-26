@@ -35,6 +35,20 @@
     }
   </style>
 </head>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script>
+  const { createApp, computed, ref } = Vue;
+  createApp({
+    setup() {
+      const name = ref("");
+      const heading = "Interactive Greeting (Vue)";
+      const greeting = computed(() => name.value ? `Hi ${name.value}!` : "Hi there!");
+      return { name, heading, greeting };
+    }
+  }).mount("#about-widget");
+</script>
+
 <body>
   <nav>
     <div class="menu-container">
@@ -50,6 +64,15 @@
 
   <main style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
     
+    <div id="about-widget" class="card" style="max-width:600px;margin:2rem auto 0">
+  <h2>{{ heading }}</h2>
+  <p class="muted">Say hello (instant preview):</p>
+  <input v-model="name" placeholder="Your name"
+         style="width:100%;padding:.6rem;border-radius:10px;border:1px solid var(--ring)">
+  <p style="margin-top:.8rem">Preview → <strong>{{ greeting }}</strong></p>
+</div>
+
+
     <div class="section">
       <img src="assets/images/section_image_0.png" alt="Dylan introduction" />
       <div class="section-text">
